@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Carrinho</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Casa do Vinil</h1>
+                <p>Seu carrinho de compras</p>
+            </div>
+            <a href="index.html" style="color: #9844d4; text-decoration: none; font-weight: bold;">← Voltar à Loja</a>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 40px;">
+        <h2>Itens Selecionados</h2>
+        
+        <div id="carrinho-vazio" class="escondido" style="text-align: center; padding: 40px; color: #8d8d99;">
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">Seu carrinho está vazio.</p>
+            <a href="index.html" class="btn-comprar" style="text-decoration: none; display: inline-block;">Ir para o Catálogo</a>
+        </div>
+
+        <div id="conteudo-carrinho">
+            <div id="lista-itens-carrinho"></div>
+
+            <div style="background-color: #1a1a1e; border: 1px solid #29292e; padding: 25px; border-radius: 8px; margin-top: 30px; text-align: right;">
+                <p style="font-size: 1.4rem; margin-bottom: 20px;">Total do Pedido: <span id="total-carrinho" style="color: #04d3c9; font-weight: bold;">R$ 0,00</span></p>
+                <button id="btn-finalizar" class="btn-comprar" style="font-size: 1.1rem; padding: 15px 35px;">Finalizar Compra</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal-sucesso" class="modal-overlay escondido">
+        <div class="modal-content">
+            <div style="font-size: 4rem; color: #04d3c9; margin-bottom: 15px;">🎉</div>
+            <h3 style="color: #ffffff; font-size: 1.8rem; margin-bottom: 10px;">Pedido Confirmado!</h3>
+            <p style="color: #a8a8b3; margin-bottom: 25px;">Sua compra foi processada com sucesso. Obrigado por apoiar o mercado musical de vinil!</p>
+            <button id="btn-modal-fechar" class="btn-comprar" style="width: 100%;">Voltar para a Página Inicial</button>
+        </div>
+    </div>
+
+    <script src="carrinho.js"></script>
+</body>
+</html>

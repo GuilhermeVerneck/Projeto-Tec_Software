@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa do Vinil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Casa do Vinil</h1>
+                <p>Explore clássicos e modernos em alta definição</p>
+            </div>
+            <a href="carrinho.html" id="carrinho-status" style="text-decoration: none; font-size: 1.2rem; background: #202024; padding: 10px 20px; border-radius: 20px; border: 1px solid #9844d4; display: block; color: #e1e1e6;">
+                🛒 Carrinho: <span id="cart-contador" style="color: #04d3c9; font-weight: bold;">0</span> itens
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="painel-detalhe" class="escondido">
+            <h2>Visualizando Agora</h2>
+
+            <div class="layout-detalhe">
+                <div class="info-disco">
+                    <h3 id="detalhe-titulo"></h3>
+                    <p id="detalhe-artista" class="artista"></p>
+                    <p id="detalhe-preco" class="preco"></p>
+
+                    <div id="detalhe-tags" class="tags-container"></div>
+
+                    <button class="btn-comprar">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+
+                <div class="player-spotify">
+                    <div id="container-iframe"></div>
+                </div>
+            </div>
+
+            <h3 class="titulo-recomendacao">
+                Com base nas suas preferências, você também pode gostar de:
+            </h3>
+
+            <div id="grid-recomendacoes" class="grid-discos"></div>
+        </section>
+
+        <section>
+            <h2>Nosso Catálogo Completo</h2>
+            <div id="vitrine-principal" class="grid-discos"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Trabalho de Conclusão - Período Treinee Tec & Soft - 2026</p>
+    </footer>
+
+    <div id="modal-adicionado" class="modal-overlay escondido">
+        <div class="modal-content">
+            <div style="font-size: 4rem; color: #04d3c9; margin-bottom: 15px;">🛒</div>
+            <h3 style="color: #ffffff; font-size: 1.8rem; margin-bottom: 10px;">Adicionado ao Carrinho!</h3>
+            <p style="color: #a8a8b3; margin-bottom: 25px;">O vinil foi adicionado ao seu carrinho de compras.</p>
+        
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <button id="btn-continuar" class="btn-comprar" style="background-color: #29292e; color: #ffffff; margin-top: 0;">Continuar</button>
+                <a href="carrinho.html" class="btn-comprar" style="text-decoration: none; text-align: center; margin-top: 0; line-height: 24px;">Ver Carrinho</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

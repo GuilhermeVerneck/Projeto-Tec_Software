@@ -1,0 +1,34 @@
+[
+    {
+        "id": "1",
+        "spotifyId": "4LH4d3cOWNNsVw41Gqt2kv",
+        "nome": "The Dark Side of the Moon",
+        "artista": "Pink Floyd",
+        "preco": 189.90,
+        "tags": ["rock", "progressivo", "classico", "anos 70"]
+    },
+    {
+        "id": "2",
+        "spotifyId": "5LEXck3kfixFaA3CqVE7bC",
+        "nome": "White Pony",
+        "artista": "Deftones",
+        "preco": 175.00,
+        "tags": ["rock", "alternativo", "metal", "progressivo"]
+    },
+    {
+        "id": "3",
+        "spotifyId": "1lS7FeRcSUuIGqyg99UGpj",
+        "nome": "Even in Arcadia",
+        "artista": "Sleep Token",
+        "preco": 220.00,
+        "tags": ["alternativo", "pop", "progressivo", "metal"]
+    },
+    {
+        "id": "4",
+        "spotifyId": "0FZK97MXMm5mUQ8mtudjuK",
+        "nome": "The Black Parade",
+        "artista": "My Chemical Romance",
+        "preco": 195.00,
+        "tags": ["punk rock", "emo", "alternativo", "anos 2000"]
+    }
+]

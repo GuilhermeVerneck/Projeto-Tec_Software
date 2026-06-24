@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #121214;
+    color: #e1e1e6;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 40px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background: linear-gradient(180deg, #1f1f23 0%, #121214 100%);
+    padding: 40px 0;
+    text-align: center;
+    border-bottom: 1px solid #29292e;
+}
+
+header h1 {
+    color: #9844d4;
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+header p {
+    color: #8d8d99;
+}
+
+h2 {
+    color: #ffffff;
+    margin: 30px 0 20px 0;
+    font-size: 1.6rem;
+}
+
+.grid-discos {
+    display: block;
+    margin: -10px;
+}
+
+.card-disco {
+    display: inline-block;
+    width: 30%;
+    background-color: #202024;
+    border: 1px solid #29292e;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 1.3%;
+    vertical-align: top;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.card-disco:hover {
+    border-color: #9844d4;
+    transform: translateY(-4px);
+}
+
+.card-disco h3 {
+    font-size: 1.1rem;
+    color: #f7f7f7;
+    margin-bottom: 5px;
+}
+
+.artista {
+    color: #a8a8b3;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.preco {
+    color: #04d3c9;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.escondido {
+    display: none !important;
+}
+
+#painel-detalhe {
+    background-color: #1a1a1e;
+    border: 2px solid #9844d4;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 40px;
+}
+
+.layout-detalhe {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 25px;
+}
+
+.info-disco {
+    flex: 1;
+}
+.player-spotify {
+    display: inline-block;
+    width: 450px;
+    vertical-align: top;
+}
+
+.player-spotify {
+    margin-left: 4%;
+}
+
+.tags-container {
+    margin: 15px 0;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #29292e;
+    color: #9844d4;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 6px;
+    margin-bottom: 6px;
+}
+
+.btn-comprar {
+    background-color: #9844d4;
+    color: #121214;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1rem;
+}
+
+.btn-comprar:hover {
+    background-color: #8a35c6;
+}
+
+.titulo-recomendacao {
+    margin-top: 30px;
+    color: #e1e1e6;
+    border-top: 1px solid #29292e;
+    padding-top: 20px;
+}
+
+footer {
+    text-align: center;
+    color: #7c7c8a;
+    font-size: 0.85rem;
+    margin-top: 60px;
+}
+
+.item-carrinho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #202024;
+    border: 1px solid #29292e;
+    padding: 15px 20px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.item-carrinho-info h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #1a1a1e;
+    border: 2px solid #9844d4;
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
