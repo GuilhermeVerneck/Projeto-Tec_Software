@@ -8,6 +8,7 @@ const PORT = 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use(
     session({
         secret: 'chave-vinil-token-2026',
@@ -94,6 +95,7 @@ app.get('/api/discos/:id', (req, res) => {
 
 app.use(express.json());
 
+ 
 app.post('/api/carrinho', (req, res) => {
     const { discoId } = req.body;
 
@@ -101,28 +103,90 @@ app.post('/api/carrinho', (req, res) => {
         req.session.carrinho = [];
     }
 
-    req.session.carrinho.push(discoId);
+    const itemExistente = req.session.carrinho.find(
+        item => item.discoId === discoId
+    );
 
-    res.json({ totalItens: req.session.carrinho.length });
+    if (itemExistente) {
+        itemExistente.quantidade += 1;
+    } else {
+        req.session.carrinho.push({ discoId, quantidade: 1 });
+    }
+
+    const totalItens = req.session.carrinho.reduce(
+        (soma, item) => soma + item.quantidade,
+        0
+    );
+
+    res.json({ totalItens });
 });
 
 app.get('/api/carrinho/total', (req, res) => {
-    const total = req.session.carrinho ? req.session.carrinho.length : 0;
-    res.json({ totalItens: total });
+    const carrinho = req.session.carrinho || [];
+
+    const totalItens = carrinho.reduce(
+        (soma, item) => soma + item.quantidade,
+        0
+    );
+
+    res.json({ totalItens });
 });
 
 app.get('/api/carrinho/itens', (req, res) => {
     try {
-        const idsNoCarrinho = req.session.carrinho || [];
+        const carrinho = req.session.carrinho || [];
         const discos = lerDiscos();
 
-        const itensDetalhados = idsNoCarrinho.map(id => {
-            return discos.find(d => d.id === id);
-        }).filter(Boolean);
+        const itensDetalhados = carrinho
+            .map(item => {
+                const disco = discos.find(d => d.id === item.discoId);
+                if (!disco) return null;
+
+                return {
+                    ...disco,
+                    discoId: disco.id,
+                    quantidade: item.quantidade
+                };
+            })
+            .filter(Boolean);
 
         res.json(itensDetalhados);
     } catch (error) {
         res.status(500).json({ error: 'Erro ao carregar itens do carrinho.' });
+    }
+});
+
+
+app.post('/api/carrinho/atualizar', (req, res) => {
+    try {
+        const { discoId, quantidade } = req.body;
+
+        if (!req.session.carrinho) {
+            return res.status(400).json({ error: 'Carrinho vazio.' });
+        }
+
+        if (quantidade < 1) {
+            req.session.carrinho = req.session.carrinho.filter(
+                item => item.discoId !== discoId
+            );
+        } else {
+            const item = req.session.carrinho.find(
+                item => item.discoId === discoId
+            );
+
+            if (item) {
+                item.quantidade = quantidade;
+            }
+        }
+
+        const totalItens = req.session.carrinho.reduce(
+            (soma, item) => soma + item.quantidade,
+            0
+        );
+
+        res.json({ success: true, totalItens });
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao atualizar quantidade.' });
     }
 });
 

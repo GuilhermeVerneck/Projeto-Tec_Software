@@ -5,7 +5,8 @@
         "nome": "The Dark Side of the Moon",
         "artista": "Pink Floyd",
         "preco": 189.90,
-        "tags": ["rock", "progressivo", "classico", "anos 70"]
+        "tags": ["rock", "progressivo", "classico", "anos 70"],
+        "capa": "/images/capaPinkFloyd.jpg"
     },
     {
         "id": "2",
@@ -13,7 +14,8 @@
         "nome": "White Pony",
         "artista": "Deftones",
         "preco": 175.00,
-        "tags": ["rock", "alternativo", "metal", "progressivo"]
+        "tags": ["rock", "alternativo", "metal", "progressivo"],
+        "capa": "/images/capaDeftones.jpg"
     },
     {
         "id": "3",
@@ -21,7 +23,8 @@
         "nome": "Even in Arcadia",
         "artista": "Sleep Token",
         "preco": 220.00,
-        "tags": ["alternativo", "pop", "progressivo", "metal"]
+        "tags": ["alternativo", "pop", "progressivo", "metal"],
+        "capa": "/images/capaEvenInArcadia.jpg"
     },
     {
         "id": "4",
@@ -29,6 +32,7 @@
         "nome": "The Black Parade",
         "artista": "My Chemical Romance",
         "preco": 195.00,
-        "tags": ["punk rock", "emo", "alternativo", "anos 2000"]
+        "tags": ["punk rock", "emo", "alternativo", "anos 2000"],
+        "capa": "/images/capaBlackParade.jpg"
     }
 ]

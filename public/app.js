@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const detalhePreco = document.getElementById('detalhe-preco');
     const detalheTags = document.getElementById('detalhe-tags');
     const containerIframe = document.getElementById('container-iframe');
+    const btnFechar = document.getElementById('btn-fechar-detalhe');
 
     let idDiscoAtivo = null;
 
@@ -96,21 +97,49 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (erro) {
             console.error('Erro ao carregar detalhes:', erro);
         }
+
+        btnFechar.addEventListener('click', () => {
+
+        painelDetalhe.className = 'escondido';
+
+        containerIframe.innerHTML = '';
+
+        idDiscoAtivo = null;
+
+});
+
     }
 
     function criarCardDisco(disco) {
-        const div = document.createElement('div');
+         const div = document.createElement('div');
 
-        div.className = 'card-disco';
+    div.className = 'card-disco';
 
-        div.innerHTML = `
+    div.innerHTML = `
+
+        <img
+            class="capa-disco"
+            src="${disco.capa}"
+            alt="${disco.nome}"
+        >
+
+        <div class="conteudo-card">
+
             <h3>${disco.nome}</h3>
-            <p class="artista">${disco.artista}</p>
-            <p class="preco">R$ ${disco.preco.toFixed(2)}</p>
-        `;
 
-        return div;
-    }
+            <p class="artista">
+                ${disco.artista}
+            </p>
+
+            <p class="preco">
+                R$ ${disco.preco.toFixed(2)}
+            </p>
+
+        </div>
+    `;
+
+    return div;
+}
 
     const btnComprar = document.querySelector('.btn-comprar');
     const cartContador = document.getElementById('cart-contador');

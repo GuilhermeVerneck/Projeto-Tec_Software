@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon.ico?v=2">
     <title>Casa do Vinil</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <h1>Casa do Vinil</h1>
-                <p>Explore clássicos e modernos em alta definição</p>
+            <div class="logo">
+                <img src="/images/favicon.ico" class="logo-icon" alt="Logo Casa do Vinil">
+                <div class="logo-texto">
+                    <h1>Casa do Vinil</h1>
+                    <p>Explore clássicos e modernos em alta definição</p>
+                </div>
             </div>
             <a href="carrinho.html" id="carrinho-status" style="text-decoration: none; font-size: 1.2rem; background: #202024; padding: 10px 20px; border-radius: 20px; border: 1px solid #9844d4; display: block; color: #e1e1e6;">
                 🛒 Carrinho: <span id="cart-contador" style="color: #04d3c9; font-weight: bold;">0</span> itens
@@ -20,7 +24,12 @@
     </header>
 
     <main class="container">
-        <section id="painel-detalhe" class="escondido">
+            <section id="painel-detalhe" class="escondido">
+
+            <button id="btn-fechar-detalhe" class="btn-fechar">
+                ×
+            </button>
+
             <h2>Visualizando Agora</h2>
 
             <div class="layout-detalhe">
@@ -56,6 +65,7 @@
 
     <footer>
         <p>Trabalho de Conclusão - Período Treinee Tec & Soft - 2026</p>
+        <p>💜 feito para os amantes de musica</p>
     </footer>
 
     <div id="modal-adicionado" class="modal-overlay escondido">
