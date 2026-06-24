@@ -28,23 +28,75 @@ document.addEventListener('DOMContentLoaded', () => {
             let valorTotal = 0;
 
             itens.forEach(item => {
+                const quantidade = item.quantidade || 1;
+                const subtotal = item.preco * quantidade;
+
                 const divItem = document.createElement('div');
                 divItem.className = 'item-carrinho';
                 divItem.innerHTML = `
-                    <div class="item-carrinho-info">
-                        <h4>${item.nome}</h4>
-                        <p class="artista">${item.artista}</p>
+                    <div class="item-carrinho-principal">
+                        <img
+                            class="capa-item-carrinho"
+                            src="${item.capa}"
+                            alt="${item.nome}"
+                        >
+                        <div class="item-carrinho-info">
+                            <h4>${item.nome}</h4>
+                            <p class="artista">${item.artista}</p>
+                        </div>
                     </div>
-                    <div class="preco">R$ ${item.preco.toFixed(2)}</div>
+
+                    <div class="item-carrinho-controles">
+                        <div class="controle-quantidade" data-disco-id="${item.discoId}">
+                            <button
+                                class="btn-qtd btn-diminuir"
+                                aria-label="Diminuir quantidade"
+                            >−</button>
+                            <span class="quantidade-valor">${quantidade}</span>
+                            <button class="btn-qtd btn-aumentar" aria-label="Aumentar quantidade">+</button>
+                        </div>
+                        <div class="preco">R$ ${subtotal.toFixed(2)}</div>
+                    </div>
                 `;
                 listaItensCarrinho.appendChild(divItem);
-                valorTotal += item.preco;
+                valorTotal += subtotal;
             });
 
             totalCarrinho.textContent = `R$ ${valorTotal.toFixed(2)}`;
 
         } catch (erro) {
             console.error('Erro ao renderizar o carrinho:', erro);
+        }
+    }
+
+    listaItensCarrinho.addEventListener('click', (evento) => {
+        const botao = evento.target.closest('.btn-qtd');
+        if (!botao || botao.disabled) return;
+
+        const controle = botao.closest('.controle-quantidade');
+        const discoId = controle.dataset.discoId;
+        const valorAtual = parseInt(controle.querySelector('.quantidade-valor').textContent, 10);
+
+        const novaQuantidade = botao.classList.contains('btn-aumentar')
+            ? valorAtual + 1
+            : valorAtual - 1;
+
+        if (novaQuantidade < 0) return;
+
+        atualizarQuantidade(discoId, novaQuantidade);
+    });
+
+    async function atualizarQuantidade(discoId, quantidade) {
+        try {
+            await fetch('/api/carrinho/atualizar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ discoId, quantidade })
+            });
+
+            renderizarCarrinho();
+        } catch (erro) {
+            console.error('Erro ao atualizar quantidade:', erro);
         }
     }
 
