@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/favicon.ico?v=2">
     <title>Casa do Vinil</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <header>
@@ -17,11 +17,18 @@
                     <p>Explore clássicos e modernos em alta definição</p>
                 </div>
             </div>
-            <a href="carrinho.html" id="carrinho-status" style="text-decoration: none; font-size: 1.2rem; background: #202024; padding: 10px 20px; border-radius: 20px; border: 1px solid #9844d4; display: block; color: #e1e1e6;">
+            <a href="/carrinho.html" id="carrinho-status" style="text-decoration: none; font-size: 1.2rem; background: #202024; padding: 10px 20px; border-radius: 20px; border: 1px solid #9844d4; display: block; color: #e1e1e6;">
                 🛒 Carrinho: <span id="cart-contador" style="color: #04d3c9; font-weight: bold;">0</span> itens
             </a>
         </div>
     </header>
+
+    <nav style="background: #1a1a1e; border-bottom: 1px solid #29292e; padding: 12px 0;">
+        <div class="container" style="display: flex; gap: 24px;">
+            <a href="/index.html" style="color: #9844d4; text-decoration: none; font-size: 0.95rem; font-weight: bold;">🎵 Catálogo</a>
+            <a href="/descoberta.html" style="color: #8d8d99; text-decoration: none; font-size: 0.95rem;">🎲 Descoberta</a>
+        </div>
+    </nav>
 
     <main class="container">
             <section id="painel-detalhe" class="escondido">
@@ -36,6 +43,7 @@
                 <div class="info-disco">
                     <h3 id="detalhe-titulo"></h3>
                     <p id="detalhe-artista" class="artista"></p>
+                    <p id="detalhe-descricao" class="artista"></p>
                     <p id="detalhe-preco" class="preco"></p>
 
                     <div id="detalhe-tags" class="tags-container"></div>
@@ -60,7 +68,15 @@
         <section>
             <div class="cabecalho-catalogo">
                 <h2>Nosso Catálogo Completo</h2>
-                <button id="btn-filtro" class="btn-filtro">🔍 Filtro</button>
+                <div style="display: flex; gap: 10px;">
+                    <button id="btn-filtro" class="btn-filtro">🔍 Filtro</button>
+                    <select id="select-ordenacao" class="btn-filtro">
+                        <option value="">Ordenar</option>
+                        <option value="preco-asc">Menor preço</option>
+                        <option value="preco-desc">Maior preço</option>
+                        <option value="az">A–Z</option>
+                    </select>
+                </div>
             </div>
 
             <div id="caixa-filtro" class="caixa-filtro escondido">
@@ -98,11 +114,11 @@
         
             <div style="display: flex; gap: 15px; justify-content: center;">
                 <button id="btn-continuar" class="btn-comprar" style="background-color: #29292e; color: #ffffff; margin-top: 0;">Continuar</button>
-                <a href="carrinho.html" class="btn-comprar" style="text-decoration: none; text-align: center; margin-top: 0; line-height: 24px;">Ver Carrinho</a>
+                <a href="/carrinho.html" class="btn-comprar" style="text-decoration: none; text-align: center; margin-top: 0; line-height: 24px;">Ver Carrinho</a>
             </div>
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="/app.js"></script>
 </body>
 </html>

@@ -2,73 +2,134 @@
     {
         "id": "1",
         "spotifyId": "4LH4d3cOWNNsVw41Gqt2kv",
+        "spotifyTrackId": "0vFOzaXqZHahrZp6enQwQb",
         "nome": "The Dark Side of the Moon",
         "artista": "Pink Floyd",
         "preco": 189.90,
+        "descricao": "Lançado em 1973, é um dos álbuns mais vendidos da história da música. Explora temas como tempo, ganância, loucura e a pressão da vida moderna através de uma sonoridade psicodélica e cinematográfica. Cada faixa se conecta à próxima formando uma experiência contínua e imersiva.",
         "tags": ["rock", "progressivo", "classico", "anos 70"],
         "capa": "/images/capaPinkFloyd.jpg"
     },
     {
         "id": "2",
         "spotifyId": "5LEXck3kfixFaA3CqVE7bC",
+        "spotifyTrackId": "7IoK6jZBxY7NMoQPoPXZCF",
         "nome": "White Pony",
         "artista": "Deftones",
         "preco": 175.00,
+        "descricao": "Lançado em 2000, é amplamente considerado a obra-prima dos Deftones. Mistura metal alternativo com shoegaze, trip-hop e dream pop de forma que poucos álbuns de rock conseguiram. A atmosfera é densa, sensual e introspectiva do início ao fim.",
         "tags": ["rock", "alternativo", "metal", "progressivo"],
         "capa": "/images/capaDeftones.jpg"
     },
     {
         "id": "3",
         "spotifyId": "1lS7FeRcSUuIGqyg99UGpj",
+        "spotifyTrackId": "3hql0mbMMRqo3V3XfrTu73",
         "nome": "Even in Arcadia",
         "artista": "Sleep Token",
         "preco": 220.00,
+        "descricao": "Lançado em 2025, é o álbum mais ambicioso do Sleep Token até hoje. Mistura metal progressivo, pop e R&B numa narrativa intensa e cinematográfica, explorando devoção, perda e transcendência. Consolidou a banda como um dos projetos mais originais do rock contemporâneo.",
         "tags": ["alternativo", "pop", "progressivo", "metal"],
         "capa": "/images/capaEvenInArcadia.jpg"
     },
     {
         "id": "4",
         "spotifyId": "0FZK97MXMm5mUQ8mtudjuK",
+        "spotifyTrackId": "5wQnmLuC1W7ATsArWACrgW",
         "nome": "The Black Parade",
         "artista": "My Chemical Romance",
         "preco": 195.00,
+        "descricao": "Lançado em 2006, é um álbum conceitual narrado por um paciente terminal que revive memórias no momento da morte. Marco do rock alternativo dos anos 2000, combina influências de punk, emo e rock clássico numa produção grandiosa e teatral.",
         "tags": ["punk rock", "emo", "alternativo", "anos 2000"],
         "capa": "/images/capaBlackParade.jpg"
     },
     {
       "id": "5",
         "spotifyId": "5OZ44LaqZbpP3m9B3oT8br",
+        "spotifyTrackId": "0lhr5iRkWbHL5yYGvmQOmk",
         "nome": "Red Moon in Venus",
         "artista": "Kali Uchis",
         "preco": 175.00,
+        "descricao": "Lançado em 2023, é um álbum etéreo e sensual que transita entre R&B, soul e pop com leveza e profundidade. As letras exploram amor, vulnerabilidade e autoconhecimento numa atmosfera quase onírica. Um dos projetos mais aclamados da carreira de Kali Uchis.",
         "tags": ["R&B", "soul", "alternativo", "pop"],
         "capa": "/images/capaRedMoonInVenus.jpg"  
     },
     {
       "id": "6",
         "spotifyId": "3dbh9K8CNUq8BQcL0VxbZf",
+        "spotifyTrackId": "6wUp7y502iyWLuLuurlOyw",
         "nome": "Chico Buarque de Hollanda - Nº4",
         "artista": "Chico Buarque",
         "preco": 230.00,
+        "descricao": "Lançado em 1970, em plena ditadura militar, reúne algumas das composições mais marcantes de Chico Buarque. As letras usam metáforas e poesia para driblar a censura e falar sobre liberdade, amor e resistência. Um documento essencial da MPB e da história do Brasil.",
         "tags": ["MPB", "samba", "bossa nova", "folk"],
         "capa": "/images/capaChico_buarque_de_hollanda_nº4.jpg"  
     },
     {
       "id": "7",
         "spotifyId": "1rpCHilZQkw84A3Y9czvMO",
+        "spotifyTrackId": "1Ukxccao1BlWrPhYkcXbwZ",
         "nome": "Bewitched",
         "artista": "Laufey",
         "preco": 195.00,
+        "descricao": "Lançado em 2023, mistura jazz clássico com pop contemporâneo com uma delicadeza rara. Laufey escreve sobre amor não correspondido, nostalgia e solidão com maturidade surpreendente. O álbum a revelou para o mundo e conquistou um Grammy de Melhor Álbum de Jazz Tradicional.",
         "tags": ["jazz", "soul", "bossa nova", "folk"],
         "capa": "/images/capaBewitched.jpg"  
     },
     {
       "id": "8",
         "spotifyId": "42cH7mrkfljkqkxA2Ip9Xq",
+        "spotifyTrackId": "2P5yIMu2DNeMXTyOANKS6k",
         "nome": "Be the Cowboy",
         "artista": "Mitski",
         "preco": 180.00,
+        "descricao": "Lançado em 2018, é um álbum de art pop conciso e emocionalmente devastador. Em faixas curtas e precisas, Mitski explora solidão, desejo e a dificuldade de se conectar com o outro. Consolidou ela como uma das compositoras mais originais e honestas do indie americano.",
         "tags": ["indie", "alternativa", "pop", "art pop"],
         "capa": "/images/capaBetheCowboy.jpg"  
+    },
+    {
+      "id": "9",
+        "spotifyId": "4wCvCNsMJJvyeX5mGO40ae",
+        "spotifyTrackId": "1XR1X1VTyTOVdPgH18RdME",
+        "nome": "Promise",
+        "artista": "Sade",
+        "preco": 220.00,
+        "descricao": "Lançado em 1985, é o segundo álbum de Sade e contém alguns dos maiores clássicos da artista, incluindo The Sweetest Taboo. Mistura soul, jazz e soft rock numa atmosfera elegante e melancólica que definiu o som de toda uma geração.",
+        "tags": ["R&B", "soul", "jazz", "pop"],
+        "capa": "/images/capaParadise.png"  
+    },
+    {
+      "id": "10",
+        "spotifyId": "1ULzlYxHYd9oyAXqvZ7Afz",
+        "spotifyTrackId": "2xsLPQ4UHFYdqmGwS7wQ1E",
+        "nome": "Convoque Seu Buda",
+        "artista": "Criolo",
+        "preco": 280.00,
+        "descricao": "Lançado em 2014, é um marco do hip-hop brasileiro. Criolo constrói um álbum denso e político que fala sobre negritude, periferia e espiritualidade com riqueza lírica e produção impecável. Considerado um dos melhores discos brasileiros dos anos 2010.",
+        "tags": ["R&B", "soul", "rap", "hip-hop"],
+        "capa": "/images/capaConvoqueSeuBuda.png"  
+    },
+    {
+      "id": "11",
+        "spotifyId": "4vJUBwgIaG2AD5rP32O730",
+        "spotifyTrackId": "4qvUtYRNwmFzfJ2loWkQCH",
+        "nome": "Infinito Particular",
+        "artista": "Marisa Monte",
+        "preco": 250.00,
+        "descricao": "Lançado em 2006, é um dos álbuns mais intimistas de Marisa Monte. As composições transitam entre MPB, bossa nova e pop com leveza e profundidade, explorando amor, tempo e espiritualidade. Um disco delicado e atemporal que marcou a discografia da artista.",
+        "tags": ["pop", "MPB"],
+        "capa": "/images/capaInfinitoParticular.png"  
+    },
+    {
+      "id": "12",
+        "spotifyId": "7ycBtnsMtyVbbwTfJwRjSP",
+        "spotifyTrackId": "33i0KOPBWURNW3l97a4QPy",
+        "nome": "To Pimp a Butterfly",
+        "artista": "Kendrick Lamar",
+        "preco": 300.00,
+        "descricao": "Lançado em 2015, é amplamente considerado um dos maiores álbuns da história do hip-hop. Kendrick mistura rap, jazz, funk e spoken word para construir uma obra sobre identidade negra, trauma, fama e responsabilidade. Político, poético e musicalmente revolucionário.",
+        "tags": ["rap", "hip-hop", "R&B"],
+        "capa": "/images/capaTPAB.png"  
     }
+    
 ]

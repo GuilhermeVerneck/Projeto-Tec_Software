@@ -1,7 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const vitrinePrincipal = document.getElementById('vitrine-principal');
     const painelDetalhe = document.getElementById('painel-detalhe');
     const gridRecomendacoes = document.getElementById('grid-recomendacoes');
+    const selectOrdenacao = document.getElementById('select-ordenacao');
+
 
     const detalheTitulo = document.getElementById('detalhe-titulo');
     const detalheArtista = document.getElementById('detalhe-artista');
@@ -21,7 +23,12 @@ const btnAplicarFiltro = document.getElementById('btn-aplicar-filtro');
 const btnLimparFiltro = document.getElementById('btn-limpar-filtro');
 const btnFecharFiltro = document.getElementById('btn-fechar-filtro');
 
-    carregarVitrine();
+    await carregarVitrine();
+
+    const match = window.location.pathname.match(/\/disco\/(\w+)/);
+    if (match) {
+        carregarDetalhesDisco(match[1]);
+    }
 
     async function carregarVitrine() {
         try {
@@ -48,6 +55,7 @@ const btnFecharFiltro = document.getElementById('btn-fechar-filtro');
 
             detalheTitulo.textContent = disco.nome;
             detalheArtista.textContent = `Por ${disco.artista}`;
+            document.getElementById('detalhe-descricao').textContent = disco.descricao || '';
             detalhePreco.textContent = `R$ ${disco.preco.toFixed(2)}`;
 
             detalheTags.innerHTML = '';
@@ -95,21 +103,19 @@ const btnFecharFiltro = document.getElementById('btn-fechar-filtro');
                 });
             }
 
-            painelDetalhe.className = '';
+            const abrirPainel = () => {
+                painelDetalhe.className = '';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+            if (document.startViewTransition) {
+                document.startViewTransition(abrirPainel);
+            } else {
+                abrirPainel();
+            }
+            istory.pushState({ id }, '', `/disco/${id}`);
         } catch (erro) {
             console.error('Erro ao carregar detalhes:', erro);
         }
-
-        btnFechar.addEventListener('click', () => {
-
-        painelDetalhe.className = 'escondido';
-
-        containerIframe.innerHTML = '';
-
-        idDiscoAtivo = null;
-
-});
-
     }
 
     function criarCardDisco(disco) {
@@ -256,4 +262,46 @@ function renderizarVitrine(lista) {
     btnContinuar.addEventListener('click', () => {
         modalAdicionado.classList.add('escondido');
     });
+
+    btnFechar.addEventListener('click', () => {
+    const fecharPainel = () => {
+        painelDetalhe.className = 'escondido';
+        containerIframe.innerHTML = '';
+        idDiscoAtivo = null;
+    };
+    if (document.startViewTransition) {
+        document.startViewTransition(fecharPainel);
+    } else {
+        fecharPainel();
+    }
+    history.pushState({}, '', '/');
+});
+
+
+    selectOrdenacao.addEventListener('change', () => {
+        const valor = selectOrdenacao.value;
+        let lista = [...todosDiscos];
+
+    if (valor === 'preco-asc') {
+        lista.sort((a, b) => a.preco - b.preco);
+    } else if (valor === 'preco-desc') {
+        lista.sort((a, b) => b.preco - a.preco);
+    } else if (valor === 'az') {
+        lista.sort((a, b) => a.nome.localeCompare(b.nome));
+    }
+
+        renderizarVitrine(lista);
+    });
+
+    window.addEventListener('popstate', (evento) => {
+        if (evento.state?.id) {
+            carregarDetalhesDisco(evento.state.id);
+        } else {
+            painelDetalhe.className = 'escondido';
+            containerIframe.innerHTML = '';
+            idDiscoAtivo = null;
+        }
+    });
+
+
 });

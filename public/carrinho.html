@@ -8,6 +8,15 @@
     <link rel="icon" href="/images/carrinho.ico?v=2">
     
 </head>
+
+<script>
+    document.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', () => {
+            document.documentElement.setAttribute('data-vt-direction', 'back');
+        });
+    });
+</script>
+
 <body>
 
     <header>

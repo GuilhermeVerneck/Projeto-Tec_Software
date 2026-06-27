@@ -7,7 +7,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.json()); // ← veio para cá
 
 app.use(
     session({
@@ -25,7 +25,6 @@ const lerDiscos = () => {
         path.join(__dirname, 'data', 'discos.json'),
         'utf-8'
     );
-
     return JSON.parse(dados);
 };
 
@@ -34,24 +33,17 @@ app.get('/api/discos', (req, res) => {
         const discos = lerDiscos();
         res.json(discos);
     } catch (error) {
-        res.status(500).json({
-            error: 'Erro ao carregar o catálogo.'
-        });
+        res.status(500).json({ error: 'Erro ao carregar o catálogo.' });
     }
 });
 
 app.get('/api/discos/:id', (req, res) => {
     try {
         const discos = lerDiscos();
-
-        const discoAtual = discos.find(
-            d => d.id === req.params.id
-        );
+        const discoAtual = discos.find(d => d.id === req.params.id);
 
         if (!discoAtual) {
-            return res.status(404).json({
-                error: 'Disco não encontrado.'
-            });
+            return res.status(404).json({ error: 'Disco não encontrado.' });
         }
 
         if (!req.session.tagsVistas) {
@@ -69,33 +61,20 @@ app.get('/api/discos/:id', (req, res) => {
             .map(d => {
                 const afinidadeDireta =
                     d.tags.filter(tag => discoAtual.tags.includes(tag)).length * 2;
-
                 const afinidadeHistorico =
                     d.tags.filter(tag => req.session.tagsVistas.includes(tag)).length * 1;
-
-                return {
-                    ...d,
-                    score: afinidadeDireta + afinidadeHistorico
-                };
+                return { ...d, score: afinidadeDireta + afinidadeHistorico };
             })
             .filter(d => d.score > 0)
             .sort((a, b) => b.score - a.score)
             .slice(0, 3);
 
-        res.json({
-            disco: discoAtual,
-            recomendacoes
-        });
+        res.json({ disco: discoAtual, recomendacoes });
     } catch (error) {
-        res.status(500).json({
-            error: 'Erro ao processar recomendações.'
-        });
+        res.status(500).json({ error: 'Erro ao processar recomendações.' });
     }
 });
 
-app.use(express.json());
-
- 
 app.post('/api/carrinho', (req, res) => {
     const { discoId } = req.body;
 
@@ -103,9 +82,7 @@ app.post('/api/carrinho', (req, res) => {
         req.session.carrinho = [];
     }
 
-    const itemExistente = req.session.carrinho.find(
-        item => item.discoId === discoId
-    );
+    const itemExistente = req.session.carrinho.find(item => item.discoId === discoId);
 
     if (itemExistente) {
         itemExistente.quantidade += 1;
@@ -113,22 +90,13 @@ app.post('/api/carrinho', (req, res) => {
         req.session.carrinho.push({ discoId, quantidade: 1 });
     }
 
-    const totalItens = req.session.carrinho.reduce(
-        (soma, item) => soma + item.quantidade,
-        0
-    );
-
+    const totalItens = req.session.carrinho.reduce((soma, item) => soma + item.quantidade, 0);
     res.json({ totalItens });
 });
 
 app.get('/api/carrinho/total', (req, res) => {
     const carrinho = req.session.carrinho || [];
-
-    const totalItens = carrinho.reduce(
-        (soma, item) => soma + item.quantidade,
-        0
-    );
-
+    const totalItens = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
     res.json({ totalItens });
 });
 
@@ -141,12 +109,7 @@ app.get('/api/carrinho/itens', (req, res) => {
             .map(item => {
                 const disco = discos.find(d => d.id === item.discoId);
                 if (!disco) return null;
-
-                return {
-                    ...disco,
-                    discoId: disco.id,
-                    quantidade: item.quantidade
-                };
+                return { ...disco, discoId: disco.id, quantidade: item.quantidade };
             })
             .filter(Boolean);
 
@@ -155,7 +118,6 @@ app.get('/api/carrinho/itens', (req, res) => {
         res.status(500).json({ error: 'Erro ao carregar itens do carrinho.' });
     }
 });
-
 
 app.post('/api/carrinho/atualizar', (req, res) => {
     try {
@@ -166,24 +128,13 @@ app.post('/api/carrinho/atualizar', (req, res) => {
         }
 
         if (quantidade < 1) {
-            req.session.carrinho = req.session.carrinho.filter(
-                item => item.discoId !== discoId
-            );
+            req.session.carrinho = req.session.carrinho.filter(item => item.discoId !== discoId);
         } else {
-            const item = req.session.carrinho.find(
-                item => item.discoId === discoId
-            );
-
-            if (item) {
-                item.quantidade = quantidade;
-            }
+            const item = req.session.carrinho.find(item => item.discoId === discoId);
+            if (item) item.quantidade = quantidade;
         }
 
-        const totalItens = req.session.carrinho.reduce(
-            (soma, item) => soma + item.quantidade,
-            0
-        );
-
+        const totalItens = req.session.carrinho.reduce((soma, item) => soma + item.quantidade, 0);
         res.json({ success: true, totalItens });
     } catch (error) {
         res.status(500).json({ error: 'Erro ao atualizar quantidade.' });
@@ -199,8 +150,10 @@ app.post('/api/carrinho/finalizar', (req, res) => {
     }
 });
 
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.listen(PORT, () => {
-    console.log(
-        `Servidor rodando em http://localhost:${PORT}`
-    );
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

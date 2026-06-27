@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon.ico?v=2">
+    <title>Descoberta — Casa do Vinil</title>
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<script>
+    document.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', () => {
+            const destino = link.getAttribute('href');
+            if (destino && (destino.includes('index') || destino === '/')) {
+                document.documentElement.setAttribute('data-vt-direction', 'back');
+            } else {
+                document.documentElement.removeAttribute('data-vt-direction');
+            }
+        });
+    });
+</script>
+
+<body>
+    <header>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="logo">
+                <img src="/images/favicon.ico" class="logo-icon" alt="Logo Casa do Vinil">
+                <div class="logo-texto">
+                    <h1>Casa do Vinil</h1>
+                    <p>Explore clássicos e modernos em alta definição</p>
+                </div>
+            </div>
+            <a href="/carrinho.html" id="carrinho-status" style="text-decoration: none; font-size: 1.2rem; background: #202024; padding: 10px 20px; border-radius: 20px; border: 1px solid #9844d4; display: block; color: #e1e1e6;">
+                🛒 Carrinho: <span id="cart-contador" style="color: #04d3c9; font-weight: bold;">0</span> itens
+            </a>
+        </div>
+    </header>
+
+    <nav style="background: #1a1a1e; border-bottom: 1px solid #29292e; padding: 12px 0;">
+        <div class="container" style="display: flex; gap: 24px;">
+            <a href="/index.html" style="color: #8d8d99; text-decoration: none; font-size: 0.95rem; transition: color 0.2s;">🎵 Catálogo</a>
+            <a href="/descoberta.html" style="color: #9844d4; text-decoration: none; font-size: 0.95rem; font-weight: bold;">🎲 Descoberta</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="descoberta-wrapper">
+            <div class="descoberta-intro">
+                <h2>Não sabe o que ouvir hoje?</h2>
+                <p>A gente sorteia um álbum pra você. Gostou? Vai direto pro catálogo. Não curtiu? A gente tenta de novo.</p>
+            </div>
+
+            <div id="card-descoberta" class="card-descoberta">
+                <img id="descoberta-capa" class="capa-descoberta" src="" alt="">
+                <p id="descoberta-nome" class="descoberta-nome"></p>
+                <p id="descoberta-artista" class="descoberta-artista"></p>
+                <div id="descoberta-player" class="descoberta-player"></div>
+                <div class="descoberta-acoes">
+                    <button id="btn-gostei" class="btn-gostei">👍 Gostei, quero ver mais</button>
+                    <button id="btn-proximo" class="btn-proximo">👎 Próximo</button>
+                </div>
+            </div>
+
+            <div id="descoberta-fim" class="descoberta-fim escondido">
+                <p>Você viu todos os álbuns do catálogo!</p>
+                <button id="btn-reiniciar" class="btn-reiniciar">🔄 Embaralhar de novo</button>
+            </div>
+
+            <p id="contador-descoberta" class="contador-descoberta"></p>
+        </div>
+    </main>
+
+    <footer>
+        <p>Trabalho de Conclusão - Período Treinee Tec & Soft - 2026</p>
+        <p>💜 feito para os amantes de musica</p>
+    </footer>
+
+    <script src="descoberta.js"></script>
+</body>
+</html>
