@@ -440,3 +440,138 @@ footer {
         height: 52px;
     }
 }
+
+/* ============================================================
+   FILTRO DO CATÁLOGO
+   ============================================================ */
+.cabecalho-catalogo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.cabecalho-catalogo h2 {
+    margin: 0;
+}
+
+.btn-filtro {
+    background-color: #29292e;
+    color: #e1e1e6;
+    border: 1px solid #9844d4;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-filtro:hover,
+.btn-filtro:focus-visible {
+    background-color: #9844d4;
+    color: #ffffff;
+}
+
+.caixa-filtro {
+    background-color: #1a1a1e;
+    border: 1px solid #29292e;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0 40px 0;
+    position: relative;
+}
+
+.filtro-grupo {
+    margin-bottom: 18px;
+}
+
+.filtro-grupo label,
+.filtro-label {
+    display: block;
+    color: #e1e1e6;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.filtro-grupo input[type="number"] {
+    background-color: #29292e;
+    border: 1px solid #3a3a42;
+    border-radius: 6px;
+    color: #e1e1e6;
+    padding: 8px 12px;
+    width: 140px;
+    font-size: 0.95rem;
+}
+
+.filtro-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filtro-tag-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #29292e;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #c4c4cc;
+    cursor: pointer;
+}
+
+.filtro-tag-item:has(input:checked) {
+    background-color: #9844d4;
+    color: #ffffff;
+}
+
+.filtro-acoes {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-limpar-filtro {
+    background-color: transparent;
+    color: #a8a8b3;
+    border: 1px solid #29292e;
+    padding: 12px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-limpar-filtro:hover,
+.btn-limpar-filtro:focus-visible {
+    background-color: #29292e;
+    color: #e1e1e6;
+}
+
+.btn-fechar-filtro {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background-color: #29292e;
+    color: #c4c4cc;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-fechar-filtro:hover,
+.btn-fechar-filtro:focus-visible {
+    background-color: #9844d4;
+    color: #ffffff;
+}

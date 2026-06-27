@@ -11,6 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnFechar = document.getElementById('btn-fechar-detalhe');
 
     let idDiscoAtivo = null;
+    let todosDiscos = [];
+
+const btnFiltro = document.getElementById('btn-filtro');
+const caixaFiltro = document.getElementById('caixa-filtro');
+const filtroPrecoInput = document.getElementById('filtro-preco');
+const filtroTagsContainer = document.getElementById('filtro-tags');
+const btnAplicarFiltro = document.getElementById('btn-aplicar-filtro');
+const btnLimparFiltro = document.getElementById('btn-limpar-filtro');
+const btnFecharFiltro = document.getElementById('btn-fechar-filtro');
 
     carregarVitrine();
 
@@ -19,17 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const resposta = await fetch('/api/discos');
             const discos = await resposta.json();
 
-            vitrinePrincipal.innerHTML = '';
+            todosDiscos = discos;
+            montarFiltroTags(discos);
 
-            discos.forEach(disco => {
-                const card = criarCardDisco(disco);
-
-                card.addEventListener('click', () => {
-                    carregarDetalhesDisco(disco.id);
-                });
-
-                vitrinePrincipal.appendChild(card);
-            });
+            renderizarVitrine(discos);
         } catch (erro) {
             console.error('Erro ao carregar vitrine:', erro);
         }
@@ -140,6 +142,90 @@ document.addEventListener('DOMContentLoaded', () => {
 
     return div;
 }
+
+function renderizarVitrine(lista) {
+        vitrinePrincipal.innerHTML = '';
+
+        if (lista.length === 0) {
+            vitrinePrincipal.innerHTML = `
+                <p class="artista">
+                    Nenhum disco encontrado com esse filtro.
+                </p>
+            `;
+            return;
+        }
+
+        lista.forEach(disco => {
+            const card = criarCardDisco(disco);
+
+            card.addEventListener('click', () => {
+                carregarDetalhesDisco(disco.id);
+            });
+
+            vitrinePrincipal.appendChild(card);
+        });
+    }
+
+    function montarFiltroTags(discos) {
+        const tagsUnicas = new Set();
+
+        discos.forEach(disco => {
+            disco.tags.forEach(tag => tagsUnicas.add(tag));
+        });
+
+        filtroTagsContainer.innerHTML = '';
+
+        [...tagsUnicas].sort().forEach(tag => {
+            const label = document.createElement('label');
+            label.className = 'filtro-tag-item';
+
+            label.innerHTML = `
+                <input type="checkbox" value="${tag}">
+                #${tag}
+            `;
+
+            filtroTagsContainer.appendChild(label);
+        });
+    }
+
+    function aplicarFiltro() {
+        const precoMax = parseFloat(filtroPrecoInput.value);
+
+        const tagsSelecionadas = [...filtroTagsContainer.querySelectorAll('input:checked')]
+            .map(input => input.value);
+
+        const listaFiltrada = todosDiscos.filter(disco => {
+            const passaPreco = isNaN(precoMax) || disco.preco <= precoMax;
+
+            const passaTags = tagsSelecionadas.length === 0 ||
+                tagsSelecionadas.every(tag => disco.tags.includes(tag));
+
+            return passaPreco && passaTags;
+        });
+
+        renderizarVitrine(listaFiltrada);
+    }
+
+    function limparFiltro() {
+        filtroPrecoInput.value = '';
+
+        filtroTagsContainer.querySelectorAll('input:checked').forEach(input => {
+            input.checked = false;
+        });
+
+        renderizarVitrine(todosDiscos);
+    }
+
+    btnFiltro.addEventListener('click', () => {
+        caixaFiltro.classList.toggle('escondido');
+    });
+
+    btnFecharFiltro.addEventListener('click', () => {
+        caixaFiltro.classList.add('escondido');
+    });
+
+    btnAplicarFiltro.addEventListener('click', aplicarFiltro);
+    btnLimparFiltro.addEventListener('click', limparFiltro);
 
     const btnComprar = document.querySelector('.btn-comprar');
     const cartContador = document.getElementById('cart-contador');

@@ -58,7 +58,29 @@
         </section>
 
         <section>
-            <h2>Nosso Catálogo Completo</h2>
+            <div class="cabecalho-catalogo">
+                <h2>Nosso Catálogo Completo</h2>
+                <button id="btn-filtro" class="btn-filtro">🔍 Filtro</button>
+            </div>
+
+            <div id="caixa-filtro" class="caixa-filtro escondido">
+                <button id="btn-fechar-filtro" class="btn-fechar-filtro">×</button>
+                <div class="filtro-grupo">
+                    <label for="filtro-preco">Preço até:</label>
+                    <input type="number" id="filtro-preco" min="0" step="5.00" placeholder="0,00">
+                </div>
+
+                <div class="filtro-grupo">
+                    <p class="filtro-label">Tags:</p>
+                    <div id="filtro-tags" class="filtro-tags"></div>
+                </div>
+
+                <div class="filtro-acoes">
+                    <button id="btn-aplicar-filtro" class="btn-comprar">Aplicar Filtro</button>
+                    <button id="btn-limpar-filtro" class="btn-limpar-filtro">Limpar</button>
+                </div>
+            </div>
+
             <div id="vitrine-principal" class="grid-discos"></div>
         </section>
     </main>
