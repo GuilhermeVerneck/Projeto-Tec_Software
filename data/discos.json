@@ -34,5 +34,41 @@
         "preco": 195.00,
         "tags": ["punk rock", "emo", "alternativo", "anos 2000"],
         "capa": "/images/capaBlackParade.jpg"
+    },
+    {
+      "id": "5",
+        "spotifyId": "5OZ44LaqZbpP3m9B3oT8br",
+        "nome": "Red Moon in Venus",
+        "artista": "Kali Uchis",
+        "preco": 175.00,
+        "tags": ["R&B", "soul", "alternativo", "pop"],
+        "capa": "/images/capaRedMoonInVenus.jpg"  
+    },
+    {
+      "id": "6",
+        "spotifyId": "3dbh9K8CNUq8BQcL0VxbZf",
+        "nome": "Chico Buarque de Hollanda - Nº4",
+        "artista": "Chico Buarque",
+        "preco": 230.00,
+        "tags": ["MPB", "samba", "bossa nova", "folk"],
+        "capa": "/images/capaChico_buarque_de_hollanda_nº4.jpg"  
+    },
+    {
+      "id": "7",
+        "spotifyId": "1rpCHilZQkw84A3Y9czvMO",
+        "nome": "Bewitched",
+        "artista": "Laufey",
+        "preco": 195.00,
+        "tags": ["jazz", "soul", "bossa nova", "folk"],
+        "capa": "/images/capaBewitched.jpg"  
+    },
+    {
+      "id": "8",
+        "spotifyId": "42cH7mrkfljkqkxA2Ip9Xq",
+        "nome": "Be the Cowboy",
+        "artista": "Mitski",
+        "preco": 180.00,
+        "tags": ["indie", "alternativa", "pop", "art pop"],
+        "capa": "/images/capaBetheCowboy.jpg"  
     }
 ]
