@@ -130,6 +130,98 @@
         "descricao": "Lançado em 2015, é amplamente considerado um dos maiores álbuns da história do hip-hop. Kendrick mistura rap, jazz, funk e spoken word para construir uma obra sobre identidade negra, trauma, fama e responsabilidade. Político, poético e musicalmente revolucionário.",
         "tags": ["rap", "hip-hop", "R&B"],
         "capa": "/images/capaTPAB.png"  
+    },
+    {
+        "id": "13",
+        "spotifyId": "0hHopYqXhuvYSHtVyrcb1g",
+        "spotifyTrackId": "028njLMKzGg4gAVSgMeOhm",
+        "nome": "Infinity On High",
+        "artista": "Fall Out Boy",
+        "preco": 185.00,
+        "descricao": "Lançado em 2007, é um dos álbuns mais marcantes do Fall Out Boy e da cena pop punk dos anos 2000. Misturando pop punk, emo e elementos de rock alternativo, o disco apresenta refrões grandiosos, produção mais ambiciosa e letras que exploram fama, relacionamentos e identidade. Inclui sucessos como 'Thnks fr th Mmrs', 'This Ain’t a Scene, It’s an Arms Race' e 'The Take Over, The Breaks Over'.",
+        "tags": ["pop punk", "emo", "rock alternativo", "punk rock"],
+        "capa": "/images/infinityOnHigh.png"
+    },
+    {
+        "id": "14",
+        "spotifyId": "6LMC7ZuVNDUQ0tHpGKdd9K",
+        "spotifyTrackId": "5935qbjUXUmA0I139yFvfB",
+        "nome": "Folie à Deux",
+        "artista": "Fall Out Boy",
+        "preco": 245.00,
+        "descricao": "Lançado em 2008, é considerado um dos trabalhos mais ambiciosos do Fall Out Boy. O álbum expande o som pop punk tradicional da banda incorporando elementos de pop barroco, soul e rock alternativo. Com letras mais introspectivas e produção elaborada, aborda temas como fama, relações humanas e desgaste emocional. Embora tenha dividido opiniões no lançamento, tornou-se um dos discos mais cultuados da banda.",
+        "tags": [
+            "pop punk",
+            "emo",
+            "rock alternativo",
+            "pop rock"
+        ],
+        "capa": "/images/folieADeux.png"
+    },
+    {
+        "id": "15",
+        "spotifyId": "3umOBqXWR9VnJTQoe9Qkkj",
+        "spotifyTrackId": "16cC7n6IU1tNQnsABUDGvX",
+        "nome": "Life's Not Out To Get You",
+        "artista": "Neck Deep",
+        "preco": 180.00,
+        "descricao": "Lançado em 2015, marcou a consolidação do Neck Deep como um dos principais nomes do pop punk moderno. O álbum combina energia adolescente, refrões explosivos e letras que alternam entre ansiedade, amadurecimento e otimismo. Com influência direta do pop punk dos anos 2000, tornou-se um clássico contemporâneo do gênero.",
+        "tags": [
+            "pop punk",
+            "emo pop",
+            "punk rock",
+            "alternative rock"
+        ],
+        "capa": "/images/LFN.png"
+    },
+    {
+        "id": "16",
+        "spotifyId": "5OM6yWHis0MATzshFTzWSH",
+        "spotifyTrackId": "1hL0uGMnVIhgHZ0KJnkkWD",
+        "nome": "When You’re Through Thinking, Say Yes",
+        "artista": "Yellowcard",
+        "preco": 200.00,
+        "descricao": "Lançado em 2011, marcou o retorno do Yellowcard após um período de pausa. O álbum mantém a identidade pop punk da banda enquanto reforça os arranjos característicos de violino que definiram seu som. As músicas exploram temas como recomeço, amadurecimento e esperança com forte apelo melódico.",
+        "tags": [
+            "pop punk",
+            "alternative rock",
+            "emo",
+            "melodic punk"
+        ],
+        "capa": "/images/YellowCard.png"
+    },
+    {
+        "id": "17",
+        "spotifyId": "0UtenXp3qVbWedKEaNRAp9",
+        "spotifyTrackId": "1wVriKkwEG9veA5lhphOZE",
+        "nome": "A Lesson In Romantics",
+        "artista": "Mayday Parade",
+        "preco": 195.00,
+        "descricao": "Lançado em 2007, tornou-se um dos discos mais influentes da cena emo e pop punk dos anos 2000. Misturando melodias marcantes com letras emocionais e narrativas sobre amor, perda e juventude, o álbum conquistou status cult entre fãs do gênero e permanece como a obra mais emblemática da banda.",
+        "tags": [
+            "emo",
+            "pop punk",
+            "alternative rock",
+            "emo pop"
+        ],
+        "capa": "/images/Mayday.png"
+    },
+    {
+        "id": "18",
+        "spotifyId": "78ZshSpqcIXyrYBJGgiPK0",
+        "spotifyTrackId": "4EaZpcwWzPhpCW9p4IWDkA",
+        "nome": "Don't Panic",
+        "artista": "All Time Low",
+        "preco": 205.00,
+        "descricao": "Lançado em 2012, marcou uma renovação criativa para o All Time Low e trouxe a banda de volta às raízes do pop punk energético. Com refrões memoráveis e letras sobre mudanças, relacionamentos e amadurecimento, o álbum se tornou um dos mais celebrados da discografia do grupo.",
+        "tags": [
+            "pop punk",
+            "pop rock",
+            "alternative rock",
+            "emo"
+        ],
+        "capa": "/images/Dontpanic.png"
     }
+
     
 ]

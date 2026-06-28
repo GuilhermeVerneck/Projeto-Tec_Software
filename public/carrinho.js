@@ -3,21 +3,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalCarrinho = document.getElementById('total-carrinho');
     const conteudoCarrinho = document.getElementById('conteudo-carrinho');
     const carrinhoVazio = document.getElementById('carrinho-vazio');
-    
+
     const btnFinalizar = document.getElementById('btn-finalizar');
     const modalSucesso = document.getElementById('modal-sucesso');
     const btnModalFechar = document.getElementById('btn-modal-fechar');
 
     renderizarCarrinho();
 
+    function atualizarBadgeCarrinho(totalItens) {
+        const cartContador = document.getElementById('cart-contador');
+        if (cartContador) {
+            cartContador.textContent = totalItens;
+        }
+        localStorage.setItem('totalCarrinho', totalItens);
+    }
+
     async function renderizarCarrinho() {
         try {
             const resposta = await fetch('/api/carrinho/itens');
             const itens = await resposta.json();
 
+            // Total de unidades no carrinho (soma das quantidades), usado no badge do header
+            const totalItens = itens.reduce((acc, item) => acc + (item.quantidade || 1), 0);
+            atualizarBadgeCarrinho(totalItens);
+
             if (itens.length === 0) {
                 conteudoCarrinho.classList.add('escondido');
                 carrinhoVazio.classList.remove('escondido');
+                totalCarrinho.textContent = 'R$ 0,00';
                 return;
             }
 
@@ -84,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (novaQuantidade < 0) return;
 
         atualizarQuantidade(discoId, novaQuantidade);
+
     });
 
     async function atualizarQuantidade(discoId, quantidade) {
@@ -94,10 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify({ discoId, quantidade })
             });
 
+            // renderizarCarrinho() busca o carrinho atualizado e já recalcula
+            // o badge do header a partir da lista real de itens
             renderizarCarrinho();
         } catch (erro) {
             console.error('Erro ao atualizar quantidade:', erro);
         }
+
     }
 
     btnFinalizar.addEventListener('click', async () => {
