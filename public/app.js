@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const gridRecomendacoes = document.getElementById('grid-recomendacoes');
     const selectOrdenacao = document.getElementById('select-ordenacao');
 
-
     const detalheTitulo = document.getElementById('detalhe-titulo');
     const detalheArtista = document.getElementById('detalhe-artista');
     const detalhePreco = document.getElementById('detalhe-preco');
@@ -15,13 +14,23 @@ document.addEventListener('DOMContentLoaded', async () => {
     let idDiscoAtivo = null;
     let todosDiscos = [];
 
-const btnFiltro = document.getElementById('btn-filtro');
-const caixaFiltro = document.getElementById('caixa-filtro');
-const filtroPrecoInput = document.getElementById('filtro-preco');
-const filtroTagsContainer = document.getElementById('filtro-tags');
-const btnAplicarFiltro = document.getElementById('btn-aplicar-filtro');
-const btnLimparFiltro = document.getElementById('btn-limpar-filtro');
-const btnFecharFiltro = document.getElementById('btn-fechar-filtro');
+    const btnFiltro = document.getElementById('btn-filtro');
+    const caixaFiltro = document.getElementById('caixa-filtro');
+    const filtroPrecoInput = document.getElementById('filtro-preco');
+    const filtroTagsContainer = document.getElementById('filtro-tags');
+    const btnAplicarFiltro = document.getElementById('btn-aplicar-filtro');
+    const btnLimparFiltro = document.getElementById('btn-limpar-filtro');
+    const btnFecharFiltro = document.getElementById('btn-fechar-filtro');
+
+    const btnComprar = document.querySelector('.btn-comprar');
+    const cartContador = document.getElementById('cart-contador');
+    const modalAdicionado = document.getElementById('modal-adicionado');
+    const btnContinuar = document.getElementById('btn-continuar');
+
+    // Inicializa o contador do carrinho (uma única vez)
+    if (cartContador) {
+        cartContador.textContent = localStorage.getItem('totalCarrinho') || '0';
+    }
 
     await carregarVitrine();
 
@@ -112,44 +121,43 @@ const btnFecharFiltro = document.getElementById('btn-fechar-filtro');
             } else {
                 abrirPainel();
             }
-            istory.pushState({ id }, '', `/disco/${id}`);
+            history.pushState({ id }, '', `/disco/${id}`);
         } catch (erro) {
             console.error('Erro ao carregar detalhes:', erro);
         }
     }
 
     function criarCardDisco(disco) {
-         const div = document.createElement('div');
+        const div = document.createElement('div');
 
-    div.className = 'card-disco';
+        div.className = 'card-disco';
 
-    div.innerHTML = `
+        div.innerHTML = `
+            <img
+                class="capa-disco"
+                src="${disco.capa}"
+                alt="${disco.nome}"
+            >
 
-        <img
-            class="capa-disco"
-            src="${disco.capa}"
-            alt="${disco.nome}"
-        >
+            <div class="conteudo-card">
 
-        <div class="conteudo-card">
+                <h3>${disco.nome}</h3>
 
-            <h3>${disco.nome}</h3>
+                <p class="artista">
+                    ${disco.artista}
+                </p>
 
-            <p class="artista">
-                ${disco.artista}
-            </p>
+                <p class="preco">
+                    R$ ${disco.preco.toFixed(2)}
+                </p>
 
-            <p class="preco">
-                R$ ${disco.preco.toFixed(2)}
-            </p>
+            </div>
+        `;
 
-        </div>
-    `;
+        return div;
+    }
 
-    return div;
-}
-
-function renderizarVitrine(lista) {
+    function renderizarVitrine(lista) {
         vitrinePrincipal.innerHTML = '';
 
         if (lista.length === 0) {
@@ -233,12 +241,6 @@ function renderizarVitrine(lista) {
     btnAplicarFiltro.addEventListener('click', aplicarFiltro);
     btnLimparFiltro.addEventListener('click', limparFiltro);
 
-    const btnComprar = document.querySelector('.btn-comprar');
-    const cartContador = document.getElementById('cart-contador');
-
-    const modalAdicionado = document.getElementById('modal-adicionado');
-    const btnContinuar = document.getElementById('btn-continuar');
-
     btnComprar.addEventListener('click', async () => {
         if (!idDiscoAtivo) return;
 
@@ -252,6 +254,8 @@ function renderizarVitrine(lista) {
             const dados = await resposta.json();
             cartContador.textContent = dados.totalItens;
 
+            localStorage.setItem('totalCarrinho', dados.totalItens);
+
             modalAdicionado.classList.remove('escondido');
 
         } catch (erro) {
@@ -264,31 +268,30 @@ function renderizarVitrine(lista) {
     });
 
     btnFechar.addEventListener('click', () => {
-    const fecharPainel = () => {
-        painelDetalhe.className = 'escondido';
-        containerIframe.innerHTML = '';
-        idDiscoAtivo = null;
-    };
-    if (document.startViewTransition) {
-        document.startViewTransition(fecharPainel);
-    } else {
-        fecharPainel();
-    }
-    history.pushState({}, '', '/');
-});
-
+        const fecharPainel = () => {
+            painelDetalhe.className = 'escondido';
+            containerIframe.innerHTML = '';
+            idDiscoAtivo = null;
+        };
+        if (document.startViewTransition) {
+            document.startViewTransition(fecharPainel);
+        } else {
+            fecharPainel();
+        }
+        history.pushState({}, '', '/');
+    });
 
     selectOrdenacao.addEventListener('change', () => {
         const valor = selectOrdenacao.value;
         let lista = [...todosDiscos];
 
-    if (valor === 'preco-asc') {
-        lista.sort((a, b) => a.preco - b.preco);
-    } else if (valor === 'preco-desc') {
-        lista.sort((a, b) => b.preco - a.preco);
-    } else if (valor === 'az') {
-        lista.sort((a, b) => a.nome.localeCompare(b.nome));
-    }
+        if (valor === 'preco-asc') {
+            lista.sort((a, b) => a.preco - b.preco);
+        } else if (valor === 'preco-desc') {
+            lista.sort((a, b) => b.preco - a.preco);
+        } else if (valor === 'az') {
+            lista.sort((a, b) => a.nome.localeCompare(b.nome));
+        }
 
         renderizarVitrine(lista);
     });
@@ -302,6 +305,5 @@ function renderizarVitrine(lista) {
             idDiscoAtivo = null;
         }
     });
-
 
 });
